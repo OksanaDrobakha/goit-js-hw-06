@@ -1,18 +1,17 @@
-// data - length = "6"
-// blur втрата фокусу;
-// border стає зеленим якщо +
-// valid і invalid для додавання стилів
-
 const textInput = document.querySelector("#validation-input");
-const dataLength = textInput.getAttribute("data-length");
-
-textInput.addEventListener("focus", (event) => {
-  textInput.value = event.target.value;
-});
 
 textInput.addEventListener("blur", (event) => {
-  if (event.target.value.length === dataLength) {
-    elem.classList.add("valid");
+  if (event.target.value.length == textInput.getAttribute("data-length")) {
+    textInput.classList.add("valid");
+
+    if (textInput.classList.contains("invalid")) {
+      textInput.classList.remove("invalid");
+    }
+  } else {
+    if (textInput.classList.contains("valid")) {
+      textInput.classList.remove("valid");
+    }
+
+    elem.classList.add("invalid");
   }
-  elem.classList.add("invalid");
 });
